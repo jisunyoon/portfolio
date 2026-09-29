@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Design tokens — source: "프론트엔드 포트폴리오 — 화면 시안" › 5. 디자인 시스템
+   이 파일에 없는 색·간격·크기는 쓰지 않는다. 새 값이 필요하면 여기에 먼저 추가.
+   Theme is switched via <html data-theme="light|dark">
+   ========================================================================== */
+
+:root {
+  /* ---------- Typography ---------- */
+  --font-display: 'Gowun Batang', 'Apple SD Gothic Neo', serif;
+  --font-sans: 'IBM Plex Sans KR', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* size / line-height pairs */
+  --text-display: 40px; /* 화면 제목 — display 400 */
+  --leading-display: 1.35;
+  --text-title: 28px; /* 문서 섹션 제목 — sans 500 */
+  --leading-title: 1.4;
+  --text-subtitle: 20px; /* 카드 제목, 섹션 라벨 — sans 500 */
+  --leading-subtitle: 1.4;
+  --text-body: 16px; /* 본문 — sans 400 */
+  --leading-body: 1.7;
+  --text-small: 14px; /* 메뉴, 버튼, 카드 설명, 표 본문 — sans 400 */
+  --leading-small: 1.6;
+  --text-label: 12px; /* 라벨, 뱃지, 날짜 — sans 500, 숫자는 mono */
+  --leading-label: 1.5;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+
+  --tracking-display: -0.01em;
+  --tracking-label: 0.04em;
+
+  /* ---------- Spacing ---------- */
+  --space-4: 4px; /* 라벨과 값 사이, 뱃지 세로 패딩 */
+  --space-8: 8px; /* 제목과 부제 사이, 버튼 묶음 */
+  --space-12: 12px; /* 버튼 세로 패딩, 목록 항목 사이 */
+  --space-16: 16px; /* 카드 안쪽 패딩, 문단 사이, 표 셀 */
+  --space-24: 24px; /* 카드 사이, 모달 안쪽, 목록 행 패딩 */
+  --space-32: 32px; /* 메뉴 항목 사이, 본문과 목차 사이 */
+  --space-48: 48px; /* 섹션 사이, 푸터 여백, 글 안의 h2 위 */
+  --space-64: 64px; /* 페이지 좌우 여백, 홈 섹션 사이 */
+
+  /* ---------- Layout ---------- */
+  --page-max: 1280px;
+  --page-gutter: var(--space-64);
+  --measure: 768px; /* 본문 한 줄 최대 폭 */
+  --touch-target: 44px;
+
+  /* ---------- Radius ---------- */
+  --radius: 6px; /* 전부 이것 하나 */
+  --radius-pill: 999px; /* 뱃지와 칩에만 */
+
+  /* ---------- Motion ---------- */
+  --duration-hover: 160ms; /* 호버 색·테두리 전환 */
+  --ease-hover: linear;
+
+  /* ---------- Z-index ---------- */
+  --z-sticky: 100;
+  --z-modal: 300;
+  --z-toast: 400;
+}
+
+/* 좁은 화면에서는 좌우 여백을 16으로 */
+@media (max-width: 767px) {
+  :root {
+    --page-gutter: var(--space-16);
+  }
+}
+
+/* ---------- Color: light (default) ---------- */
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --color-bg: #faf8f5; /* 페이지 바탕 */
+  --color-surface: #ffffff; /* 카드, 모달, 입력, 표 안쪽 */
+  --color-text: #1f1d1a; /* 15.8:1 — 제목, 본문, 기본 버튼 바탕 */
+  --color-secondary: #5c574f; /* 6.8:1 — 설명, 날짜, 메뉴, 카드 부제 */
+  --color-caption: #8c8579; /* 3.5:1 — 저작권 줄처럼 없어도 되는 글자에만 */
+  --color-line: #e3ded5; /* 구분선, 테두리, 썸네일 바탕 */
+  --color-accent: #c4633a; /* 3.8:1 — 포커스 링, 링크 밑줄, 호버 테두리. 작은 글자색 금지 */
+  --color-accent-soft: #f6eae3; /* 뱃지 배경. 글자는 본문색 */
+  --color-success: #3f7a52; /* 4.8:1 — 완료 메시지, Do 라벨 */
+  --color-warning: #b5821f; /* 3.2:1 — 테두리와 아이콘에만. 글자색 금지 */
+  --color-danger: #b4392f; /* 5.6:1 — 오류 메시지, 입력 테두리, Don't 라벨 */
+
+  --shadow: 0 2px 8px rgba(31, 29, 26, 0.06); /* 실험 카드와 모달에만 */
+}
+
+/* ---------- Color: dark ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #141311;
+  --color-surface: #1c1a17;
+  --color-text: #efebe4;
+  --color-secondary: #b5aea3;
+  --color-caption: #857e73;
+  --color-line: #2d2a25;
+  --color-accent: #e08a5f;
+
+  /* TODO: 시안에 다크 값 없음 — 시안 메모의 임시 규칙을 따름 */
+  --color-accent-soft: var(--color-surface); /* 뱃지 배경은 표면 + 선으로 대신 */
+  --color-danger: #e08a5f; /* 오류는 다크 강조색으로 대신 */
+  /* success, warning: 다크 값 미정 → 라이트 값 그대로 */
+
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.44);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-hover: 0ms;
+  }
+}
