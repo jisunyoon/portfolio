@@ -8,17 +8,18 @@ const getSystemTheme = (): ThemeMode =>
 
 interface ThemeState {
   mode: ThemeMode
-  setMode: (mode: ThemeMode) => void
+}
+interface ThemeAction {
+    setMode: (mode: ThemeMode) => void
 }
 
-export const useThemeStore = create<ThemeState>()(
+type ThemeStore = ThemeState & ThemeAction;
+
+export const useThemeStore = create<ThemeStore>()(
   persist(
     (set) => ({
       mode: getSystemTheme(),
-      setMode: (mode) => {
-        document.documentElement.dataset.theme = mode
-        set({ mode })
-      },
+      setMode: (mode) => set({mode})
     }),
     { name: 'theme' },
   ),
