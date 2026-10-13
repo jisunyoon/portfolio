@@ -1,15 +1,21 @@
 import { useThemeStore } from '@/store/themeStore'
-import styles from './ThemeToggle.module.css'
+
+const optionClass =
+  'min-h-touch rounded-base border border-transparent px-12 text-small text-secondary transition-colors hover:text-text aria-pressed:border-line aria-pressed:bg-surface aria-pressed:font-medium aria-pressed:text-text'
 
 export function ThemeToggle() {
   const mode = useThemeStore((s) => s.mode)
   const setMode = useThemeStore((s) => s.setMode)
 
   return (
-    <div className={styles.group} role="group" aria-label="화면 테마">
+    <div
+      className="inline-flex rounded-base border border-line bg-bg"
+      role="group"
+      aria-label="화면 테마"
+    >
       <button
         type="button"
-        className={styles.option}
+        className={optionClass}
         aria-pressed={mode === 'light'}
         onClick={() => setMode('light')}
       >
@@ -17,7 +23,7 @@ export function ThemeToggle() {
       </button>
       <button
         type="button"
-        className={styles.option}
+        className={optionClass}
         aria-pressed={mode === 'dark'}
         onClick={() => setMode('dark')}
       >

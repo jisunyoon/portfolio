@@ -10,16 +10,16 @@ interface ThemeState {
   mode: ThemeMode
 }
 interface ThemeAction {
-    setMode: (mode: ThemeMode) => void
+  setMode: (mode: ThemeMode) => void
 }
 
-type ThemeStore = ThemeState & ThemeAction;
+type ThemeStore = ThemeState & ThemeAction
 
 export const useThemeStore = create<ThemeStore>()(
   persist(
     (set) => ({
       mode: getSystemTheme(),
-      setMode: (mode) => set({mode})
+      setMode: (mode) => set({ mode }),
     }),
     { name: 'theme' },
   ),

@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { ThemeToggle } from '@/components/ThemeToggle/ThemeToggle'
 import { Home } from '@/pages/Home/Home'
 import { useThemeStore } from '@/store/themeStore'
-import styles from './App.module.css'
 
 export function App() {
   const mode = useThemeStore((s) => s.mode)
@@ -13,9 +12,11 @@ export function App() {
 
   return (
     <>
-      <header className={styles.header}>
-        <div className={`container ${styles.headerInner}`}>
-          <a href="/" className={styles.logo}>윤지선</a>
+      <header className="sticky top-0 z-10 border-b border-line bg-bg">
+        <div className="container-page flex items-center justify-between py-24">
+          <a href="/" className="font-display text-subtitle">
+            윤지선
+          </a>
           <ThemeToggle />
         </div>
       </header>

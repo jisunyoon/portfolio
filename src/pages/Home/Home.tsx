@@ -1,3 +1,3 @@
 export function Home() {
-  return <main className="container">Main 페이지</main>
+  return <main className="container-page">Main 페이지</main>
 }
